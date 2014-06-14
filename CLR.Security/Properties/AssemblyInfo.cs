@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // 有关程序集的常规信息通过下列属性集
 // 控制。更改这些属性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("CLR.DataBase")]
+[assembly: AssemblyTitle("CLR.Security")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("CLR.DataBase")]
-[assembly: AssemblyCopyright("Copyright © CLR  2014")]
+[assembly: AssemblyProduct("CLR.Security")]
+[assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("e5e4b7d5-2330-4e32-b325-8181cfc1d7f1")]
+[assembly: Guid("6441b59c-36b4-4a4b-867f-3d6aff0a9250")]
 
 // 程序集的版本信息由下面四个值组成:
 //

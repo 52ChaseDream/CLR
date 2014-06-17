@@ -3,7 +3,7 @@
 // 功    能：RSA加密解密及RSA签名和验证
 // 作    者：王义波
 // 创建时间：2014/6/14 11:24:33
-// CLR 版本：1.2
+// CLR 版本：1.3
 //=====================================================
 
 using System;
@@ -15,7 +15,7 @@ namespace CLR.Security
     /// <summary>
     /// RSA加密解密及RSA签名和验证
     /// </summary>
-    public class RSACryptionHelper : SecurityUtility
+    public sealed class RSACryptionHelper : SecurityUtility
     {
         private string _privateKey = "", _publicKey = "";
         /// <summary>

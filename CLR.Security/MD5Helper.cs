@@ -3,12 +3,16 @@
 // 功    能：MD5加密/解密类。
 // 作    者：王义波
 // 创建时间：2014/6/14 14:55:37
-// CLR 版本：1.5
+// CLR 版本：1.4
 //=====================================================
 
-using System.Security.Cryptography;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Security.Cryptography;
 using System.Web.Security;
+using System.IO;
 
 namespace CLR.Security
 {
@@ -44,7 +48,7 @@ namespace CLR.Security
         /// <returns>加密之后的字符串</returns> 
         private string Encrypt(string input, string sKey)
         {
-            return this.Encrypt(this.GetDESCryptoServiceProvider(sKey), input);
+           return this.Encrypt(this.GetDESCryptoServiceProvider(sKey), input);
         }
         /// <summary> 
         /// 解密数据 
@@ -54,7 +58,18 @@ namespace CLR.Security
         /// <returns>解密之后的字符串</returns> 
         private string Decrypt(string input, string sKey)
         {
-            return this.Decrypt(input,this.GetDESCryptoServiceProvider(sKey));
+            int _length = input.Length / 2, _num;
+            byte[] _inputByteArray = new byte[_length];
+            for (int i = 0; i < _length; i++)
+            {
+                _num = Convert.ToInt32(input.Substring(i * 2, 2), 16);
+                _inputByteArray[i] = (byte)_num;
+            }
+            MemoryStream _memoryStream = new MemoryStream();
+            CryptoStream _cryptoStream = new CryptoStream(_memoryStream, GetDESCryptoServiceProvider(sKey).CreateDecryptor(), CryptoStreamMode.Write);
+            _cryptoStream.Write(_inputByteArray, 0, _inputByteArray.Length);
+            _cryptoStream.FlushFinalBlock();
+            return Encoding.Default.GetString(_memoryStream.ToArray());
         }
 
         private DESCryptoServiceProvider GetDESCryptoServiceProvider(string sKey)

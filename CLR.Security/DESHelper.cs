@@ -3,11 +3,14 @@
 // 功    能：DES 加密与解密
 // 作    者：王义波
 // 创建时间：2014/6/16 10:50:12
-// CLR 版本：1.3
+// CLR 版本：1.4
 //=====================================================
 
-using System.Security.Cryptography;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Security.Cryptography;
 
 namespace CLR.Security
 {
@@ -67,5 +70,7 @@ namespace CLR.Security
             };
             return provider;
         }
+
+        
     }
 }

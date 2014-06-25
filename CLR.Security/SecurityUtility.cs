@@ -3,13 +3,22 @@
 // 功    能：加密与解密临时类
 // 作    者：王义波
 // 创建时间：2014/6/1 8:01:42
-// CLR 版本：1.3
+// CLR 版本：1.4
 //=====================================================
 
+using System;
+using System.Collections.Generic;
+using System.Text;
 using CLR.Common;
 
 namespace CLR.Security
 {
+    /// <summary>
+    /// 加密与解密句柄
+    /// </summary>
+    /// <param name="input">需要加密/解密的字符串</param>
+    /// <returns>string 加密/解密 成功返回加密/解密后的字符串，失败返回原字符串</returns>
+    public delegate string SecurityUtilityHandler(string input);
     /// <summary>
     /// 加密与解密临时类
     /// </summary>
@@ -26,6 +35,8 @@ namespace CLR.Security
         {
             get { return new BaseHelper(); }
         }
+
+
         /// <summary>
         /// 加密字符串
         /// </summary>
@@ -39,5 +50,14 @@ namespace CLR.Security
         /// <returns>string 解密成功返回解密后的字符串，失败返回原字符串</returns>
         public abstract string Encrypt(string input);
 
+        /// <summary>
+        /// 同步加密与解密字符串
+        /// </summary>
+        /// <param name="securityUtilityHandler">加密与解密句柄</param>
+        /// <param name="input">string 待解密/加密的字符串</param>
+        /// <returns>string 加密/解密 成功返回加密/解密后的字符串，失败返回原字符串</returns>
+        public string SecurityUtilityInvoke(SecurityUtilityHandler securityUtilityHandler,string input){
+            return securityUtilityHandler.Invoke(input);
+        }
     }
 }

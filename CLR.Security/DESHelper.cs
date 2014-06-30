@@ -3,7 +3,7 @@
 // 功    能：DES 加密与解密
 // 作    者：王义波
 // 创建时间：2014/6/16 10:50:12
-// CLR 版本：1.4
+// CLR 版本：1.5
 //=====================================================
 
 using System;
@@ -24,7 +24,7 @@ namespace CLR.Security
         /// </summary>
         /// <param name="input">需要解密的字符串</param>
         /// <returns>解密之后的字符串</returns>
-        public override string Decrypt(string input)
+        protected override string Decrypt(string input)
         {
             return this.Decrypt(input, "wangyibo");
         }
@@ -34,7 +34,7 @@ namespace CLR.Security
         ///</summary>
         ///<param name="input">需要加密的字符串</param>
         ///<returns>加密之后的字符串</returns>
-        public override string Encrypt(string input)
+        protected override string Encrypt(string input)
         {
             return this.Encrypt(input, "wangyibo");
         }
@@ -70,7 +70,5 @@ namespace CLR.Security
             };
             return provider;
         }
-
-        
     }
 }

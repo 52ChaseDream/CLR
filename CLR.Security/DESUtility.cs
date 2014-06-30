@@ -3,7 +3,7 @@
 // 功    能：DES 加密/解密类
 // 作    者：王义波
 // 创建时间：2014/6/16 10:30:38
-// CLR 版本：1.4
+// CLR 版本：1.5
 //=====================================================
 
 using System;
@@ -65,6 +65,8 @@ namespace CLR.Security
             _cryptoStream.FlushFinalBlock();
             return Encoding.Default.GetString(_memoryStream.ToArray());
         }
+
+        
 
         
 

@@ -3,7 +3,7 @@
 // 功    能：RSA加密解密及RSA签名和验证
 // 作    者：王义波
 // 创建时间：2014/6/14 11:24:33
-// CLR 版本：1.4
+// CLR 版本：1.5
 //=====================================================
 
 using System;
@@ -30,7 +30,7 @@ namespace CLR.Security
         /// </summary>
         /// <param name="_input">需要解密的字符串</param>
         /// <returns>RSA的解密之后的字符串</returns>
-        public override string Decrypt(string _input)
+        protected override string Decrypt(string _input)
         {
             return this.RSADecrypt(this._privateKey, _input);
         }
@@ -39,7 +39,7 @@ namespace CLR.Security
         /// </summary>
         /// <param name="_input">需要加密的字符串</param>
         /// <returns>RSA的加密之后的字符串</returns>
-        public override string Encrypt(string _input)
+        protected override string Encrypt(string _input)
         {
             return this.RSAEncrypt(this._publicKey, _input);
         }

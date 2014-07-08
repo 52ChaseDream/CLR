@@ -3,14 +3,13 @@
 // 功    能：OleProvider 数据库提供类
 // 作    者：王义波
 // 创建时间：2014/6/13 11:39:23
-// CLR 版本：1.3
+// CLR 版本：1.4
 //=====================================================
 
 using System;
 using System.Collections;
 using System.Data.Common;
 using System.Data.OleDb;
-using CLR.Common;
 
 namespace CLR.DataBase
 {
@@ -29,13 +28,13 @@ namespace CLR.DataBase
 
         }
 
-        /// <summary>
-        /// 当前Http请求扩展类
-        /// </summary>
-        public CurrentHelper CurrentHelperInstance
-        {
-            get { return new CurrentHelper(); }
-        }
+        ///// <summary>
+        ///// 当前Http请求扩展类
+        ///// </summary>
+        //public CurrentHelper CurrentHelperInstance
+        //{
+        //    get { return new CurrentHelper(); }
+        //}
         /// <summary>
         /// 使用指定的连接字符串初始化 System.Data.Common.DbConnection 类的新实例。
         /// </summary>
@@ -54,6 +53,17 @@ namespace CLR.DataBase
         protected override DbCommand GetCommand(string cmdText)
         {
             return new OleDbCommand(cmdText);
+        }
+
+        /// <summary>
+        /// 获取适配器信息
+        /// </summary>
+        /// <param name="selectCommandText"></param>
+        /// <param name="selectConnectionString"></param>
+        /// <returns></returns>
+        protected override DbDataAdapter GetDataAdapter(string selectCommandText, string selectConnectionString)
+        {
+            throw new NotImplementedException();
         }
     }
 }

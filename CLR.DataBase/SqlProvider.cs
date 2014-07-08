@@ -3,7 +3,7 @@
 // 功    能：SqlProvider 数据库提供类
 // 作    者：王义波
 // 创建时间：2014/5/31 13:28:26
-// CLR 版本：1.3
+// CLR 版本：1.4
 //=====================================================
 
 using System;
@@ -12,7 +12,6 @@ using System.Data;
 using System.Data.Common;
 using System.Data.OleDb;
 using System.Data.SqlClient;
-using CLR.Common;
 
 namespace CLR.DataBase
 {
@@ -48,6 +47,16 @@ namespace CLR.DataBase
         protected override DbCommand GetCommand(string cmdText)
         {
             return new SqlCommand(cmdText);
+        }
+        /// <summary>
+        /// 获取数据适配器信息
+        /// </summary>
+        /// <param name="selectCommandText"></param>
+        /// <param name="selectConnectionString"></param>
+        /// <returns></returns>
+        protected override DbDataAdapter GetDataAdapter(string selectCommandText, string selectConnectionString)
+        {
+            return new SqlDataAdapter(selectCommandText, selectConnectionString);
         }
     }
 }

@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLR.Common", "CLR.Common\CLR.Common.csproj", "{9906E54D-1B6A-4384-BA81-BB111A135223}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLR.DataBase", "CLR.DataBase\CLR.DataBase.csproj", "{0E7D1EAC-E783-452D-A4C3-B409FB7D7127}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLR.Security", "CLR.Security\CLR.Security.csproj", "{7CD23BFE-5109-4049-B65D-2EA78BFC1630}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9906E54D-1B6A-4384-BA81-BB111A135223}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9906E54D-1B6A-4384-BA81-BB111A135223}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9906E54D-1B6A-4384-BA81-BB111A135223}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9906E54D-1B6A-4384-BA81-BB111A135223}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E7D1EAC-E783-452D-A4C3-B409FB7D7127}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E7D1EAC-E783-452D-A4C3-B409FB7D7127}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E7D1EAC-E783-452D-A4C3-B409FB7D7127}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E7D1EAC-E783-452D-A4C3-B409FB7D7127}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CD23BFE-5109-4049-B65D-2EA78BFC1630}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CD23BFE-5109-4049-B65D-2EA78BFC1630}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CD23BFE-5109-4049-B65D-2EA78BFC1630}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CD23BFE-5109-4049-B65D-2EA78BFC1630}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

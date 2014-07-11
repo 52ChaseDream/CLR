@@ -77,6 +77,30 @@ namespace CLR.DataBase
             return _dataAdapter;
         }
 
+        private DbCommand GetCommand(string name, CommandType type, params DbParameter[] parameters)
+        {
+            this.Open();
+            var _command = this.GetCommand(name);
+            _command.Connection = _conn;
+            try
+            {
+                _command.CommandType = type;
+                if (parameters != null)
+                {
+                    Parallel.ForEach(parameters, item =>
+                    {
+                        _command.Parameters.Add(item);
+                    });
+                }
+            }
+            catch (Exception exception)
+            {
+                _command.Dispose();
+                throw new Exception(exception.Message);
+            }
+            return _command;
+        }
+
         /// <summary>
         /// 执行数据集
         /// </summary>
@@ -98,6 +122,26 @@ namespace CLR.DataBase
                 throw new Exception(ex.Message);
             }
             return _dataSet;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="type"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        protected override int Exec(string name, CommandType type, params DbParameter[] parameters)
+        {
+            var _command = this.GetCommand(name, type, parameters);
+            try
+            {
+                return Convert.ToInt32(_command.ExecuteNonQuery());
+            }
+            catch (Exception ex)
+            {
+                this.Close();
+                throw new Exception(ex.Message);
+            }
         }
 
         /// <summary>

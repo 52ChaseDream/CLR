@@ -6,11 +6,8 @@
 // CLR 版本：1.4
 //=====================================================
 
-using System;
-using System.Collections;
 using System.Data;
 using System.Data.Common;
-using System.Data.OleDb;
 using System.Data.SqlClient;
 
 namespace CLR.DataBase
@@ -18,7 +15,7 @@ namespace CLR.DataBase
     /// <summary>
     /// SqlProvider 数据库提供类
     /// </summary>
-    public sealed class SqlProvider : DBUtilityProvider
+    public sealed class SqlProvider : DBParameterProvider<SqlDbType>
     {
         /// <summary>
         /// 构造函数
@@ -57,6 +54,27 @@ namespace CLR.DataBase
         protected override DbDataAdapter GetDataAdapter(string selectCommandText, string selectConnectionString)
         {
             return new SqlDataAdapter(selectCommandText, selectConnectionString);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parameterName"></param>
+        /// <param name="dbType"></param>
+        /// <returns></returns>
+        protected override DbParameter GetParameter(string parameterName, SqlDbType dbType)
+        {
+            return new SqlParameter(parameterName, dbType);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parameterName"></param>
+        /// <param name="dbType"></param>
+        /// <param name="size"></param>
+        /// <returns></returns>
+        protected override DbParameter GetParameter(string parameterName, SqlDbType dbType, int size)
+        {
+            return new SqlParameter(parameterName, dbType, size);
         }
     }
 }

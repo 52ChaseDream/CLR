@@ -143,6 +143,26 @@ namespace CLR.DataBase
                 throw new Exception(ex.Message);
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="type"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        protected override DbDataReader ExecReader(string name, CommandType type, params DbParameter[] parameters)
+        {
+            var _command = this.GetCommand(name, type, parameters);
+            try
+            {
+                return _command.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                this.Close();
+                throw new Exception(ex.Message);
+            }
+        }
 
         /// <summary>
         /// 打开数据库连接

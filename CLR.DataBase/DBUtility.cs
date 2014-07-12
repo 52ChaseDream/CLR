@@ -28,7 +28,9 @@ namespace CLR.DataBase
     /// <param name="name"></param>
     /// <param name="parameters"></param>
     /// <returns></returns>
-    public delegate int RunExec(string name, params DbParameter[] parameters);
+    public delegate int RunExecHandler(string name, params DbParameter[] parameters);
+
+    public delegate DbDataReader RunCommandReaderHander(string procName, DbParameter[] parameters);
 
     /// <summary>
     /// 数据处理基层类
@@ -52,6 +54,14 @@ namespace CLR.DataBase
         /// <param name="parameters"></param>
         /// <returns></returns>
         protected abstract int Exec(string name, CommandType type, params DbParameter[] parameters);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="type"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        protected abstract DbDataReader ExecReader(string name, CommandType type, params DbParameter[] parameters);
 
         /// <summary>
         /// 执行数据集的回调函数
@@ -65,9 +75,17 @@ namespace CLR.DataBase
         /// 
         /// </summary>
         /// <returns></returns>
-        public RunExec RunExecInvoke()
+        public RunExecHandler RunExecInvoke()
         {
             return (name, parameters) => this.Exec(name, CommandType.StoredProcedure, parameters);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public RunCommandReaderHander RunCommandReaderInvoke()
+        {
+            return (name, parameters) => this.ExecReader(name, CommandType.StoredProcedure, parameters);
         }
 
 

@@ -2,8 +2,8 @@
 // Copyright (C) 2014-2020 CLR. All rights reserved. 
 // 功    能：数据库提供公共类
 // 作    者：王义波
-// 创建时间：2014/6/13 12:11:33
-// CLR 版本：1.4
+// 创建时间：2014/7/25 12:11:33
+// CLR 版本：1.5
 //=====================================================
 
 using System.Data.Common;
@@ -21,6 +21,22 @@ namespace CLR.DataBase
         private string _connectionString;
 
         private DbConnection _conn;
+
+        private bool _isTaskParallel = true;
+        /// <summary>
+        /// 是否允许多任务并发运行
+        /// </summary>
+        public override bool IsTaskParallel
+        {
+            get
+            {
+                return _isTaskParallel;
+            }
+            set
+            {
+                _isTaskParallel = value;
+            }
+        }
 
         /// <summary>
         /// 默认的构造函数
@@ -64,9 +80,11 @@ namespace CLR.DataBase
                 _dataAdapter.SelectCommand.CommandType = type;
                 if (parameters != null)
                 {
-                    Parallel.ForEach(parameters, item => {
-                        _dataAdapter.SelectCommand.Parameters.Add(item);
-                    });
+                    if (IsTaskParallel)
+                        Parallel.ForEach(parameters, (item) => _dataAdapter.SelectCommand.Parameters.Add(item));
+                    else
+                        foreach (DbParameter item in parameters) _dataAdapter.SelectCommand.Parameters.Add(item);
+
                 }
             }
             catch (Exception ex)
@@ -87,10 +105,10 @@ namespace CLR.DataBase
                 _command.CommandType = type;
                 if (parameters != null)
                 {
-                    Parallel.ForEach(parameters, item =>
-                    {
-                        _command.Parameters.Add(item);
-                    });
+                    if (IsTaskParallel)
+                        Parallel.ForEach(parameters, item => _command.Parameters.Add(item));
+                    else
+                        foreach (DbParameter item in parameters) _command.Parameters.Add(item);
                 }
             }
             catch (Exception exception)
@@ -178,11 +196,10 @@ namespace CLR.DataBase
                 this._conn.Open();
             }
         }
-
         /// <summary>
         /// 关闭数据库连接
         /// </summary>
-        public void Close()
+        protected override void DBClose()
         {
             if (this._conn != null)
             {

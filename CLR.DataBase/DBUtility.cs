@@ -2,8 +2,8 @@
 // Copyright (C) 2014-2020 CLR. All rights reserved. 
 // 功    能：数据处理基层类
 // 作    者：王义波
-// 创建时间：2014/7/8 12:11:33
-// CLR 版本：1.4
+// 创建时间：2014/7/25 12:11:33
+// CLR 版本：1.5
 //=====================================================
 using System.Data.Common;
 using System.Data;
@@ -29,7 +29,12 @@ namespace CLR.DataBase
     /// <param name="parameters"></param>
     /// <returns></returns>
     public delegate int RunExecHandler(string name, params DbParameter[] parameters);
-
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="procName"></param>
+    /// <param name="parameters"></param>
+    /// <returns></returns>
     public delegate DbDataReader RunCommandReaderHander(string procName, DbParameter[] parameters);
 
     /// <summary>
@@ -64,6 +69,16 @@ namespace CLR.DataBase
         protected abstract DbDataReader ExecReader(string name, CommandType type, params DbParameter[] parameters);
 
         /// <summary>
+        /// 关闭数据库连接
+        /// </summary>
+        protected abstract void DBClose();
+
+        /// <summary>
+        /// 是否允许多任务并发运行
+        /// </summary>
+        public abstract bool IsTaskParallel { get; set; }
+
+        /// <summary>
         /// 执行数据集的回调函数
         /// </summary>
         /// <returns></returns>
@@ -85,7 +100,15 @@ namespace CLR.DataBase
         /// <returns></returns>
         public RunCommandReaderHander RunCommandReaderInvoke()
         {
-            return (name, parameters) => this.ExecReader(name, CommandType.StoredProcedure, parameters);
+            return (name, parameters) => parameters == null ? this.ExecReader(name, CommandType.Text) : this.ExecReader(name, CommandType.StoredProcedure, parameters);
+        }
+
+        /// <summary>
+        /// 关闭数据库连接
+        /// </summary>
+        public void Close()
+        {
+            this.DBClose();
         }
 
 

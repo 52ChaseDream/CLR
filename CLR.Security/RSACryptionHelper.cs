@@ -2,8 +2,8 @@
 // Copyright (C) 2014-2020 CLR. All rights reserved. 
 // 功    能：RSA加密解密及RSA签名和验证
 // 作    者：王义波
-// 创建时间：2014/6/14 11:24:33
-// CLR 版本：1.6
+// 创建时间：2014/7/27 11:24:33
+// CLR 版本：1.7
 //=====================================================
 
 using System;
@@ -23,7 +23,16 @@ namespace CLR.Security
         /// </summary>
         public RSACryptionHelper()
         {
-            this.RSAKey(out _privateKey, out _publicKey);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="privateKey"></param>
+        /// <param name="publicKey"></param>
+        public RSACryptionHelper(string privateKey, string publicKey)
+        {
+            this._privateKey = privateKey;
+            this._publicKey = publicKey;
         }
         /// <summary>
         /// RSA的解密函数
@@ -49,7 +58,7 @@ namespace CLR.Security
         /// </summary>
         /// <param name="xmlPrivateKeys">私钥</param>
         /// <param name="xmlPublicKey">公钥</param>
-        private void RSAKey(out string xmlPrivateKeys, out string xmlPublicKey)
+        public void RSAKey(out string xmlPrivateKeys, out string xmlPublicKey)
         {
             RSACryptoServiceProvider _rSACryptoServiceProvider = new RSACryptoServiceProvider();
             xmlPrivateKeys = _rSACryptoServiceProvider.ToXmlString(true);

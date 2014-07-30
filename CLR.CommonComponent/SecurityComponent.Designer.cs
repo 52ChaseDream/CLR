@@ -33,99 +33,69 @@ namespace CLR.CommonComponent
         /// </summary>
         private void InitializeComponent()
         {
-            components = new Container();
-            this.txtSource = new TextBox();
-            this.txtDestination = new TextBox();
-            this.label1 = new Label();
-            this.cboSecurityMode = new ComboBox();
-            this.btnDecrypt = new Button();
-            this.btnEncrypt = new Button();
-            this.panel1 = new Panel();
+            this.txtSource = new System.Windows.Forms.TextBox();
+            this.txtDestination = new System.Windows.Forms.TextBox();
+            this.btnDecrypt = new System.Windows.Forms.Button();
+            this.btnEncrypt = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtSource
             // 
-            this.txtSource.Anchor = ((AnchorStyles)(((AnchorStyles.Top | AnchorStyles.Left) | AnchorStyles.Right)));
-            this.txtSource.BackColor = SystemColors.Window;
-            this.txtSource.Location = new Point(0, 0);
-            this.txtSource.Margin = new Padding(0);
+            this.txtSource.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSource.BackColor = System.Drawing.SystemColors.Window;
+            this.txtSource.Location = new System.Drawing.Point(0, 0);
+            this.txtSource.Margin = new System.Windows.Forms.Padding(0);
             this.txtSource.Multiline = true;
             this.txtSource.Name = "txtSource";
-            this.txtSource.Size = new Size(350, 25);
+            this.txtSource.Size = new System.Drawing.Size(350, 25);
             this.txtSource.TabIndex = 0;
             // 
             // txtDestination
             // 
-            this.txtDestination.Anchor = ((AnchorStyles)((AnchorStyles.Left | AnchorStyles.Right)));
-            this.txtDestination.BackColor = SystemColors.Window;
-            this.txtDestination.Location = new Point(0, 55);
-            this.txtDestination.Margin = new Padding(0);
+            this.txtDestination.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDestination.BackColor = System.Drawing.SystemColors.Window;
+            this.txtDestination.Location = new System.Drawing.Point(0, 55);
+            this.txtDestination.Margin = new System.Windows.Forms.Padding(0);
             this.txtDestination.Multiline = true;
             this.txtDestination.Name = "txtDestination";
-            this.txtDestination.Size = new Size(350, 25);
+            this.txtDestination.Size = new System.Drawing.Size(350, 25);
             this.txtDestination.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((AnchorStyles)((AnchorStyles.Top | AnchorStyles.Bottom)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new Point(3, 10);
-            this.label1.Margin = new Padding(0);
-            this.label1.Name = "label1";
-            this.label1.Size = new Size(41, 12);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "类型：";
-            // 
-            // cboSecurityMode
-            // 
-            this.cboSecurityMode.Anchor = ((AnchorStyles)((AnchorStyles.Top | AnchorStyles.Bottom)));
-            this.cboSecurityMode.FormattingEnabled = true;
-            this.cboSecurityMode.Items.AddRange(new object[] {
-            "Base64",
-            "DES",
-            "MD5",
-            "RSACryption",
-            "TripleDES"});
-            this.cboSecurityMode.Location = new Point(55, 6);
-            this.cboSecurityMode.Name = "cboSecurityMode";
-            this.cboSecurityMode.Size = new Size(121, 20);
-            this.cboSecurityMode.TabIndex = 11;
             // 
             // btnDecrypt
             // 
-            this.btnDecrypt.Anchor = ((AnchorStyles)((AnchorStyles.Top | AnchorStyles.Bottom)));
-            this.btnDecrypt.Location = new Point(187, 4);
+            this.btnDecrypt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.btnDecrypt.Location = new System.Drawing.Point(165, 4);
             this.btnDecrypt.Name = "btnDecrypt";
-            this.btnDecrypt.Size = new Size(75, 24);
+            this.btnDecrypt.Size = new System.Drawing.Size(75, 24);
             this.btnDecrypt.TabIndex = 9;
             this.btnDecrypt.Text = "解  密";
             this.btnDecrypt.UseVisualStyleBackColor = true;
-            this.btnDecrypt.Click += new EventHandler(btnDecrypt_Click);
+            this.btnDecrypt.Click += new System.EventHandler(this.btnDecrypt_Click);
             // 
             // btnEncrypt
             // 
-            this.btnEncrypt.Anchor = ((AnchorStyles)((AnchorStyles.Top | AnchorStyles.Bottom)));
-            this.btnEncrypt.Location = new Point(273, 4);
+            this.btnEncrypt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.btnEncrypt.Location = new System.Drawing.Point(0, 4);
             this.btnEncrypt.Name = "btnEncrypt";
-            this.btnEncrypt.Size = new Size(75, 24);
+            this.btnEncrypt.Size = new System.Drawing.Size(75, 24);
             this.btnEncrypt.TabIndex = 10;
             this.btnEncrypt.Text = "加  密";
             this.btnEncrypt.UseVisualStyleBackColor = true;
-            this.btnEncrypt.Click += new EventHandler(btnEncrypt_Click);
+            this.btnEncrypt.Click += new System.EventHandler(this.btnEncrypt_Click);
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((AnchorStyles)((AnchorStyles.Left | AnchorStyles.Right)));
-            this.panel1.BackColor = SystemColors.Control;
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.SystemColors.Control;
             this.panel1.Controls.Add(this.btnDecrypt);
-            this.panel1.Controls.Add(this.cboSecurityMode);
             this.panel1.Controls.Add(this.btnEncrypt);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new Point(0, 25);
-            this.panel1.Margin = new Padding(0);
+            this.panel1.Location = new System.Drawing.Point(0, 25);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new Size(350, 30);
+            this.panel1.Size = new System.Drawing.Size(350, 30);
             this.panel1.TabIndex = 13;
             // 
             // SecurityComponent
@@ -133,20 +103,17 @@ namespace CLR.CommonComponent
             this.Controls.Add(this.txtDestination);
             this.Controls.Add(this.txtSource);
             this.Controls.Add(this.panel1);
-            this.Margin = new Padding(0);
-            this.Name = "SecurityComponent";
-            this.Size = new Size(350, 80);
+            this.Margin = new System.Windows.Forms.Padding(0);
+            this.Size = new System.Drawing.Size(240, 80);
+            this.SizeChanged += new System.EventHandler(this.SecurityComponent_SizeChanged);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.SizeChanged += new EventHandler(SecurityComponent_SizeChanged);
             this.PerformLayout();
+
         }
 
         private TextBox txtSource;
         private TextBox txtDestination;
-        private Label label1;
-        private ComboBox cboSecurityMode;
         private Button btnDecrypt;
         private Button btnEncrypt;
         private Panel panel1;
